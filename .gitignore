@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/
+wrapper/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Logs
+ims-backend/run_log*.txt
