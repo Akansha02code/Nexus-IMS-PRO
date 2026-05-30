@@ -3,6 +3,8 @@
 
 Nexus IMS Pro is a high-performance, full-stack Inventory and Invoice Management System designed for modern enterprises. It combines sophisticated financial intelligence with a premium, executive-level user experience to streamline architectural estimates, billing cycles, and payment settlements.
 
+> **🎯 READY TO DEPLOY?** Start here: [**→ Render Deployment Guide**](0_RENDER_START_DEPLOYMENT.md) (20 min, FREE, HTTPS included!)
+
 ---
 
 ## ✨ Premium Features
@@ -56,7 +58,8 @@ Choose your preferred deployment method:
 
 | Method | Time | Cost | Best For |
 |--------|------|------|----------|
-| **[Vercel + Railway (HTTPS)](VERCEL_QUICK_START.md)** 🌐 | 15 min | FREE | **Production, Public facing** |
+| **[Render (HTTPS)](RENDER_START_HERE.md)** 🌐 | 20 min | FREE | **Full-stack Production** |
+| **[Vercel + Railway (HTTPS)](VERCEL_QUICK_START.md)** 🌐 | 15 min | FREE | **Vercel frontend + Railway backend** |
 | [Docker](QUICK_START.md) 🐳 | 5 min | FREE | Staging, Local testing |
 | [Local Dev](QUICK_START.md) 💻 | 10 min | FREE | Development, Debugging |
 
@@ -78,6 +81,23 @@ git push origin main
 ```
 
 👉 **[Full Vercel + Railway Guide](VERCEL_QUICK_START.md)** - Step-by-step instructions
+
+### 🌐 ALTERNATIVE: Render Deployment (Full-Stack)
+
+```bash
+# 1. Push to GitHub
+git push origin main
+
+# 2. Deploy Backend on Render
+# Visit https://render.com → Blueprint → Select repo
+
+# 3. Deploy Frontend on Render  
+# Visit https://render.com → Static Site → Select repo
+
+# Done! Your app is live at https://your-app.onrender.com ✅
+```
+
+👉 **[Full Render Guide](RENDER_START_HERE.md)** - Backend in 15 min, frontend in 5 min
 
 ### 🐳 ALTERNATIVE: Docker Deployment
 
