@@ -3,9 +3,10 @@ services:
     name: nexus-ims-backend
     env: java
     plan: free
+    rootDir: ims-backend
     buildCommand: mvn clean package -DskipTests
-    startCommand: java -Xmx256m -Xms128m -jar ims-backend/target/ims-0.0.1-SNAPSHOT.jar --spring.profiles.active=render
-    healthCheckPath: /api/health
+    startCommand: java -Xmx256m -Xms128m -jar target/ims-0.0.1-SNAPSHOT.jar --spring.profiles.active=render
+    healthCheckPath: /api/actuator/health
     healthCheckInterval: 30
     healthCheckTimeout: 5
     healthCheckUnhealthyThreshold: 3
@@ -15,9 +16,15 @@ services:
           name: nexus-ims-db
           property: connectionString
       - key: DB_USER
-        value: postgres
+        fromDatabase:
+          name: nexus-ims-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: nexus-ims-db
+          property: password
       - key: JWT_SECRET
-        sync: false
+        value: "9d\\RT%(`uLQH-s'G`V-<\\+d\"i)y?-nvb/??&Zs38T\"miCt_Zo/Kb)@R^e*^iLyMk"
       - key: CORS_ORIGINS
         value: https://your-frontend.onrender.com,http://localhost:5173
       - key: SPRING_PROFILES_ACTIVE
@@ -26,6 +33,5 @@ services:
 databases:
   - name: nexus-ims-db
     databaseName: nexus_ims_db
-    username: postgres
     plan: free
     region: oregon
