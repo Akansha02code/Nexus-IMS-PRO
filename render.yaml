@@ -1,10 +1,9 @@
 databases:
   - name: nexus-ims-db
     databaseName: nexus_ims_db
-    user: postgres
     plan: free
     region: oregon
-    postgresVersion: "15"
+    version: "15"
 
 services:
   - type: web
@@ -15,9 +14,6 @@ services:
     buildCommand: mvn clean package -DskipTests
     startCommand: java -Xmx256m -Xms128m -jar target/ims-0.0.1-SNAPSHOT.jar --spring.profiles.active=render
     healthCheckPath: /api/actuator/health
-    healthCheckInterval: 30
-    healthCheckTimeout: 5
-    healthCheckUnhealthyThreshold: 3
     envVars:
       - key: JAVA_VERSION
         value: "17"
@@ -34,8 +30,8 @@ services:
           name: nexus-ims-db
           property: password
       - key: JWT_SECRET
-        value: '9d\\RT%(`uLQH-s''G`V-<\\+d"i)y?-nvb/??&Zs38T"miCt_Zo/Kb)@R^e*^iLyMk'
+        generateValue: true
       - key: CORS_ORIGINS
-        value: 'https://your-frontend.onrender.com,http://localhost:5173'
+        value: https://your-frontend.onrender.com
       - key: SPRING_PROFILES_ACTIVE
         value: render
