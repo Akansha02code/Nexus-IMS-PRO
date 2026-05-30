@@ -17,7 +17,7 @@ services:
       - key: DB_USER
         value: postgres
       - key: JWT_SECRET
-        value: 9d\RT%(`uLQH-s'G`V-<\+d"i)y?-nvb/??&Zs38T"miCt_Zo/Kb)@R^e*^iLyMk
+        value: "9d\\RT%(`uLQH-s'G`V-<\\+d\"i)y?-nvb/??&Zs38T\"miCt_Zo/Kb)@R^e*^iLyMk"
       - key: CORS_ORIGINS
         value: https://your-frontend.onrender.com,http://localhost:5173
       - key: SPRING_PROFILES_ACTIVE
