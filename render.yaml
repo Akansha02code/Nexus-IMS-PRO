@@ -1,3 +1,9 @@
+databases:
+  - name: nexus-ims-db
+    databaseName: nexus_ims_db
+    plan: free
+    region: oregon
+
 services:
   - type: web
     name: nexus-ims-backend
@@ -24,14 +30,8 @@ services:
           name: nexus-ims-db
           property: password
       - key: JWT_SECRET
-        value: "9d\\RT%(`uLQH-s'G`V-<\\+d\"i)y?-nvb/??&Zs38T\"miCt_Zo/Kb)@R^e*^iLyMk"
+        value: "9dRT_uLQH-sG_V-d_i_y-nvb_Zs38T_miCt_Zo_Kb_e_iLyMk"
       - key: CORS_ORIGINS
-        value: https://your-frontend.onrender.com,http://localhost:5173
+        value: "https://your-frontend.onrender.com,http://localhost:5173"
       - key: SPRING_PROFILES_ACTIVE
         value: render
-
-databases:
-  - name: nexus-ims-db
-    databaseName: nexus_ims_db
-    plan: free
-    region: oregon
