@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ims-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Akanshaa@02
+      MYSQL_DATABASE: test
+      MYSQL_ALLOW_EMPTY_PASSWORD: "false"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+    networks:
+      - ims-network
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./ims-backend
+      dockerfile: Dockerfile
+    container_name: ims-backend
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/test?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      DB_USER: root
+      DB_PASSWORD: Akanshaa@02
+      JWT_SECRET: 9a67475df22d0192e2134567890abcdef1234567890abcdef1234567890abcdef
+      SERVER_PORT: 9001
+    ports:
+      - "9001:9001"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ims-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9001/api/health"]
+      timeout: 10s
+      retries: 5
+      interval: 30s
+
+  frontend:
+    build:
+      context: ./ims-frontend
+      dockerfile: Dockerfile.prod
+    container_name: ims-frontend
+    environment:
+      VITE_API_URL: http://localhost:9001/api
+    ports:
+      - "80:3000"
+      - "443:3443"
+    depends_on:
+      - backend
+    networks:
+      - ims-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  ims-network:
+    driver: bridge

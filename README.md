@@ -50,20 +50,53 @@ Nexus IMS Pro is a high-performance, full-stack Inventory and Invoice Management
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js (v16+)
-- JDK 17+
-- MySQL Server
+### 📖 Deployment Options
 
-### Backend Setup
-1. Navigate to `ims-backend`.
-2. Update `application.properties` with your MySQL credentials.
-3. Run: `./mvnw spring-boot:run`
+Choose your preferred deployment method:
 
-### Frontend Setup
-1. Navigate to `ims-frontend`.
-2. Run: `npm install`
-3. Run: `npm run dev`
+| Method | Time | Cost | Best For |
+|--------|------|------|----------|
+| **[Vercel + Railway (HTTPS)](VERCEL_QUICK_START.md)** 🌐 | 15 min | FREE | **Production, Public facing** |
+| [Docker](QUICK_START.md) 🐳 | 5 min | FREE | Staging, Local testing |
+| [Local Dev](QUICK_START.md) 💻 | 10 min | FREE | Development, Debugging |
+
+### ⚡ FASTEST: Vercel Deployment (HTTPS + Production Ready)
+
+**Deploy in 15 minutes with HTTPS:**
+
+```bash
+# 1. Push to GitHub
+git push origin main
+
+# 2. Deploy Frontend on Vercel
+# Visit https://vercel.app → Import repo → Select ims-frontend
+
+# 3. Deploy Backend on Railway  
+# Visit https://railway.app → GitHub Repo → Java auto-detected
+
+# Done! Your app is live at https://your-app.vercel.app ✅
+```
+
+👉 **[Full Vercel + Railway Guide](VERCEL_QUICK_START.md)** - Step-by-step instructions
+
+### 🐳 ALTERNATIVE: Docker Deployment
+
+```bash
+# One command deployment!
+docker-compose up -d
+```
+**Access**: Frontend at http://localhost | Backend at http://localhost:9001
+
+### 💻 Local Development Setup
+
+```bash
+# Terminal 1 - Backend
+cd ims-backend && mvn spring-boot:run
+
+# Terminal 2 - Frontend
+cd ims-frontend && npm install && npm run dev
+```
+**Access**: Frontend at http://localhost:5173 | Backend at http://localhost:9001
 
 ### 🔑 Default Access Credentials
 For evaluation purposes, use the following verified identities:
@@ -76,7 +109,7 @@ For evaluation purposes, use the following verified identities:
 ---
 
 ## 👤 Developer Credit
-**Nexus IMS Pro** was developed with precision and 💚 by **Ak❤️**.
+**Nexus IMS Pro** was developed with precision and 💚 by **Akansha❤️**.
 
 > *"Turning complex financial workflows into elegant digital experiences."*
 
